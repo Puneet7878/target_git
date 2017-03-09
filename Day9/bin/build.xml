@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name = "buildtest" default ="dist" basedir=".">
+<property name = "testcase" value = "buildtest" />
+<property name = "topdir" value = "../../" />
+
+<path id ="build_cp">
+<fileset dir = "E:\\Selenium-Webdriver-kit\\Selenium Web-driver\\Day9\\lib" includes="**/*.jar" />
+
+</path>
+
+<target name = "build" depends = "clean" description="compile the source">
+<javac listfiles="on" srcdir ="." destdir="E:\\Selenium-Webdriver-kit\\Selenium Web-driver\\Day9\\bin" debug ="on" debuglevel = "lines,vars,source">
+<classpath refid = "build_cp"/>
+</javac>
+</target>
+
+<target name = "dist" depends = "build" description = "generate the distribution">
+<jar destfile="E:\\Selenium-Webdriver-kit\\Selenium Web-driver\\Day9\\dist\\buildtest\\${testcase}.jar" >
+<fileset dir ="E:\\Selenium-Webdriver-kit\\Selenium Web-driver\\Day9\\bin" includes ="buildtest/**/*.class" excludes="**/build.xml"/>
+</jar>
+</target>
+
+<target name = "clean" description = "clean up" >
+<delete failonerror="no">
+<fileset dir = "${topdir}/dist" includes="${testcase}.jar" />
+<fileset dir = "${topdir}/bin/buildtest" includes="**/*" />
+</delete>
+</target>
+
+</project>
