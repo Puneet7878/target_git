@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <project>
+<target name="clean">
+<delete dir="jarFolder"/>
+</target>
+
+  <target name="compile" depends="clean">
+<mkdir dir="jarFolder/classes"/>
+<javac srcdir="src" destdir="jarFolder/classes">
+</javac>
+</target>
+
+
+<target name="dist" depends="compile" description= "generate the distribution">
+<mkdir dir="jarFolder/build"/>
+<jar destfile="jarFolder/build/Buildrohini.jar" basedir="jarFolder/classes">
+<manifest>
+<attribute name="Main-Class" value="hello.Buildrohini"/>
+</manifest>
+</jar>
+</target>
+
+<target name="run" depends="dist">
+<java jar="jarFolder/build/Buildrohini.jar" fork="true"/>
+
+</target>
+
+
+</project>
