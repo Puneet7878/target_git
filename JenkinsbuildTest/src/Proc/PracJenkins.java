@@ -16,8 +16,9 @@ public class PracJenkins {
 	 */
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		String s = sc.next();
+		/*Scanner sc = new Scanner(System.in);
+		String s = sc.next();*/
+		String s= "Second";
 		System.out.println(" You entered "+s);
 		
 		switch(s)
