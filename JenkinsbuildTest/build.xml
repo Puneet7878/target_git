@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+<target name="clean">
+<delete dir="jarFolder"/>
+</target>
+
+<target name="compile" depends="clean">
+<mkdir dir="jarFolder/classes"/>
+<javac srcdir="src" destdir="jarFolder/classes">
+</javac>
+</target>
+
+<target name="dist" depends="compile" description ="generate the distribution">
+<mkdir dir="jarFolder/build"/>
+<jar destfile="jarFolder/build/PracJenkins.jar" basedir="jarFolder/classes">
+<manifest>
+<attribute name="Main-Class" value="Proc.PracJenkins"/>
+</manifest>
+</jar>
+</target>
+<target name="run" depends="dist">
+<java jar="jarFolder/build/PracJenkins.jar" fork="true"/>
+</target>
+</project>
